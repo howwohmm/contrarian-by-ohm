@@ -13,7 +13,10 @@ let sidebarOpen  = false;
 async function init() {
   // Fetch quotes corpus
   const res = await fetch(chrome.runtime.getURL('quotes.json'));
-  quotes = await res.json();
+  const raw = await res.json();
+  // Dedup by exact text match
+  const seen = new Set();
+  quotes = raw.filter(q => { if (seen.has(q.text)) return false; seen.add(q.text); return true; });
 
   // Shuffle once per session using date seed so everyone sees same order per day
   const seed = Math.floor(Date.now() / 86400000);
@@ -257,6 +260,7 @@ document.addEventListener('keydown', e => {
   if (key === 'ArrowLeft')                  { e.preventDefault(); goPrev(); }
   if (key === 'f' || key === 'F')           toggleFav();
   if (key === 'l' || key === 'L')           sidebarOpen ? closeSidebar() : openSidebar();
+  if (key === 'o' || key === 'O')           { const u = quotes[currentIndex]?.url; if (u) window.open(u, '_blank'); }
   if (key === 'Escape')                     { if (sidebarOpen) closeSidebar(); }
 });
 
@@ -268,6 +272,15 @@ document.getElementById('btn-export').addEventListener('click', exportMarkdown);
 
 // Click outside sidebar to close
 document.getElementById('app').addEventListener('click', () => { if (sidebarOpen) closeSidebar(); });
+
+// ── Swipe (mobile) ────────────────────────────────────────────────────────────
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+document.addEventListener('touchend', e => {
+  const dx = e.changedTouches[0].clientX - touchStartX;
+  if (Math.abs(dx) < 50) return; // minimum swipe distance
+  dx < 0 ? goNext() : goPrev();
+}, { passive: true });
 
 // ── Boot ──────────────────────────────────────────────────────────────────────
 init();

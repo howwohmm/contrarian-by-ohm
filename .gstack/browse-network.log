@@ -1,0 +1,3 @@
+[2026-03-16T05:08:51.184Z] GET file:///Users/ohm./Desktop/contrarian/newtab.html → 200 (12ms, 3948B)
+[2026-03-16T05:08:51.213Z] GET file:///Users/ohm./Desktop/contrarian/newtab.css → 200 (4ms, 12666B)
+[2026-03-16T05:08:51.213Z] GET file:///Users/ohm./Desktop/contrarian/newtab.js → 200 (7ms, 11092B)
