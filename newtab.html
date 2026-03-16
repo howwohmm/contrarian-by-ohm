@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contrarian</title>
+  <link rel="stylesheet" href="newtab.css" />
+</head>
+<body>
+
+  <div id="app" class="app">
+    <div id="quote-wrap" class="quote-wrap">
+      <div class="quote-accent"></div>
+      <blockquote id="quote-text" class="quote-text"><a id="quote-link" class="quote-link" href="#" target="_blank" rel="noopener"></a></blockquote>
+      <div id="quote-meta" class="quote-meta">
+        <span id="quote-author" class="quote-author"></span>
+        <span id="quote-dot" class="quote-dot hidden"></span>
+        <a id="quote-source" class="quote-source" href="#" target="_blank" rel="noopener"></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wordmark -->
+  <div class="wordmark">Contrarian <a class="wordmark-byline" href="https://x.com/ohmdreams" target="_blank" rel="noopener">by ohm.</a></div>
+
+  <!-- Quote counter — bottom center -->
+  <div id="quote-counter" class="quote-counter"></div>
+
+  <!-- Bottom bar -->
+  <div class="bottom-bar">
+    <span></span>
+    <div class="bottom-right">
+      <span class="kbd-hint">
+        <kbd>Space</kbd> next &nbsp;
+        <kbd>←</kbd><kbd>→</kbd> navigate &nbsp;
+        <kbd>F</kbd> favourite
+      </span>
+      <button id="btn-fav" class="icon-btn" title="Favourite (F)">♡</button>
+      <button id="btn-list" class="icon-btn" title="Favourites (L)">☰</button>
+    </div>
+  </div>
+
+  <!-- Favourites sidebar -->
+  <aside id="fav-sidebar" class="fav-sidebar hidden" aria-label="Favourites">
+    <div class="sidebar-header">
+      <span class="sidebar-title">favourites</span>
+      <div class="sidebar-actions">
+        <button id="btn-export" class="sidebar-meta-btn">↓ export</button>
+        <button id="btn-close-sidebar" class="sidebar-meta-btn">✕</button>
+      </div>
+    </div>
+    <div id="sidebar-items" class="sidebar-items"></div>
+    <div id="sidebar-empty" class="sidebar-empty hidden">
+      <p>nothing saved yet.</p>
+      <p>press <kbd>F</kbd> on any quote to save it here.</p>
+    </div>
+  </aside>
+
+  <!-- Toast -->
+  <div id="fav-toast" class="fav-toast hidden">saved</div>
+
+  <!-- Onboarding overlay — shown on first install only -->
+  <div id="onboarding" class="ob hidden">
+
+    <!-- Step 1: Welcome -->
+    <div id="ob-step-1" class="ob-step">
+      <div class="ob-inner">
+        <div class="ob-accent"></div>
+        <h1 class="ob-title">Contrarian</h1>
+        <p class="ob-desc">
+          One idea per tab. Paul Graham's sharpest lines —<br>
+          and the thinkers he reads. No feed. No noise.
+        </p>
+        <button class="ob-btn" id="ob-next-1">continue →</button>
+      </div>
+    </div>
+
+    <!-- Step 2: How it works -->
+    <div id="ob-step-2" class="ob-step hidden">
+      <div class="ob-inner">
+        <div class="ob-accent"></div>
+        <h2 class="ob-subtitle">how it works</h2>
+        <div class="ob-controls">
+          <div class="ob-control-row">
+            <span class="ob-keys"><kbd>Space</kbd> <kbd>→</kbd></span>
+            <span class="ob-control-desc">next quote</span>
+          </div>
+          <div class="ob-control-row">
+            <span class="ob-keys"><kbd>←</kbd></span>
+            <span class="ob-control-desc">previous</span>
+          </div>
+          <div class="ob-control-row">
+            <span class="ob-keys"><kbd>F</kbd></span>
+            <span class="ob-control-desc">save to favourites</span>
+          </div>
+          <div class="ob-control-row">
+            <span class="ob-keys"><kbd>L</kbd></span>
+            <span class="ob-control-desc">open your reading list</span>
+          </div>
+        </div>
+        <button class="ob-btn" id="ob-start">start reading →</button>
+        <button class="ob-back" id="ob-back-2">← back</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="newtab.js"></script>
+</body>
+</html>
