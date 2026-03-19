@@ -2,3 +2,8 @@
 *.bak
 node_modules/
 .gstack/qa-reports/screenshots/
+# env files
+.env
+.env.*
+.env.local
+
