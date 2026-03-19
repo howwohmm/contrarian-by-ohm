@@ -130,9 +130,6 @@ function setQuote(q, wrap, text, auth, src) {
   document.getElementById('btn-fav').classList.toggle('active', isFav);
   document.getElementById('btn-fav').textContent = isFav ? '♥' : '♡';
 
-  // Counter: 042 / 125
-  const counter = document.getElementById('quote-counter');
-  if (counter) counter.textContent = `${String(currentIndex + 1).padStart(3, '0')} / ${quotes.length}`;
 
 
   // Restart breathing animation
